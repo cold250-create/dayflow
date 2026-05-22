@@ -42,7 +42,6 @@
             z-index: 0;
         }
 
-        /* Main layout */
         .main-layout {
             position: relative;
             z-index: 1;
@@ -74,15 +73,9 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 24px 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            animation: slideInLeft 0.5s ease;
             z-index: 2;
             max-height: 90vh;
             overflow-y: auto;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
         }
 
         .auth-header {
@@ -341,7 +334,13 @@
             opacity: 0.6;
         }
 
-        /* NFT Achievement popup */
+        .nft-collection-count {
+            font-size: 9px;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+        }
+
+        /* NFT Popup */
         .nft-popup {
             position: fixed;
             top: 50%;
@@ -421,7 +420,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Header */
         .header {
             background: rgba(255, 255, 255, 0.08);
             color: #fff;
@@ -435,12 +433,6 @@
             font-weight: 600;
             margin-bottom: 4px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            animation: titlePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
         }
 
         .header .date {
@@ -449,7 +441,6 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
 
-        /* Crypto widget */
         .crypto-widget {
             margin: 12px 20px;
             padding: 10px 12px;
@@ -495,10 +486,10 @@
             animation: iconGlow 2s ease-in-out infinite;
         }
 
-        .icon-btc { background: linear-gradient(135deg, #f7931a 0%, #e2761a 100%); animation-delay: 0s; }
-        .icon-eth { background: linear-gradient(135deg, #627eea 0%, #454a75 100%); animation-delay: 0.5s; }
-        .icon-sol { background: linear-gradient(135deg, #9945ff 0%, #14f195 100%); animation-delay: 1s; }
-        .icon-ton { background: linear-gradient(135deg, #0088cc 0%, #005f99 100%); animation-delay: 1.5s; }
+        .icon-btc { background: linear-gradient(135deg, #f7931a 0%, #e2761a 100%); }
+        .icon-eth { background: linear-gradient(135deg, #627eea 0%, #454a75 100%); }
+        .icon-sol { background: linear-gradient(135deg, #9945ff 0%, #14f195 100%); }
+        .icon-ton { background: linear-gradient(135deg, #0088cc 0%, #005f99 100%); }
 
         .crypto-info { flex: 1; min-width: 0; }
         .crypto-symbol { font-weight: 700; font-size: 13px; color: #fff; display: block; margin-bottom: 1px; }
@@ -518,7 +509,6 @@
             margin: -4px 0 6px 0;
         }
 
-        /* Progress bar */
         .progress-section {
             padding: 16px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -531,7 +521,6 @@
             border-radius: 10px; transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); width: 0%;
         }
 
-        /* Add task */
         .add-section {
             display: flex; gap: 10px; padding: 16px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -550,7 +539,6 @@
         .add-section button:hover { background: #ffe066; transform: scale(1.1); }
         .add-section button:active { transform: scale(0.95); }
 
-        /* Task list */
         .task-list { flex: 1; list-style: none; padding: 12px 20px; overflow-y: auto; }
         .task-item {
             display: flex; align-items: center; gap: 12px; padding: 14px 16px;
@@ -594,11 +582,9 @@
         }
         .delete-btn:hover { color: #ff4e50; background: rgba(255, 78, 80, 0.2); }
 
-        /* Empty state */
         .empty-state { text-align: center; padding: 40px 20px; color: rgba(255, 255, 255, 0.6); }
         .empty-state .icon { font-size: 48px; margin-bottom: 12px; animation: bounce 2s ease-in-out infinite; }
 
-        /* Footer */
         .footer-signature {
             text-align: center; padding: 12px 20px; font-size: 11px;
             color: rgba(255, 255, 255, 0.35); letter-spacing: 0.5px;
@@ -644,6 +630,20 @@
                         <button class="auth-btn" id="loginBtn">Sign In</button>
                         <div class="auth-divider"><span>or</span></div>
                         <button class="auth-btn secondary" id="registerBtn">Create Account</button>
+                        <button class="auth-btn secondary" id="demoBtn" style="margin-top:8px;">👀 Demo Mode (View NFTs)</button>
+                    </div>
+                    
+                    <!-- NFT Preview for guests -->
+                    <div class="nft-section" style="margin-top:16px;">
+                        <div class="nft-section-title">
+                            <span>💎</span> NFT Preview <span>💎</span>
+                        </div>
+                        <div class="nft-grid" id="nftPreviewGrid">
+                            <!-- Generated by JS -->
+                        </div>
+                        <div class="nft-collection-count">
+                            Sign in to start collecting!
+                        </div>
                     </div>
                 </div>
 
@@ -675,12 +675,12 @@
                             <div class="nft-grid" id="nftGrid">
                                 <!-- Generated by JS -->
                             </div>
-                            <div style="font-size: 9px; color: rgba(255,255,255,0.4);">
+                            <div class="nft-collection-count">
                                 <span id="nftCount">0</span> / <span id="nftTotal">12</span> collected
                             </div>
                         </div>
                         
-                        <button class="auth-btn secondary" id="logoutBtn" style="margin-top: 12px;">Sign Out</button>
+                        <button class="auth-btn secondary" id="logoutBtn" style="margin-top:12px;">Sign Out</button>
                     </div>
                 </div>
             </div>
@@ -765,18 +765,18 @@
     <script>
         // === NFT DEFINITIONS ===
         const nftCollection = [
-            { id: 'first_task', name: 'First Step', icon: '👣', rarity: 'common', condition: 'Complete 1 task', check: (stats) => stats.totalCompleted >= 1 },
-            { id: 'five_tasks', name: 'Rising Star', icon: '⭐', rarity: 'common', condition: 'Complete 5 tasks', check: (stats) => stats.totalCompleted >= 5 },
-            { id: 'streak_3', name: 'Hot Streak', icon: '🔥', rarity: 'rare', condition: '3 day streak', check: (stats) => stats.streak >= 3 },
-            { id: 'ten_tasks', name: 'Grinder', icon: '⚙️', rarity: 'rare', condition: 'Complete 10 tasks', check: (stats) => stats.totalCompleted >= 10 },
-            { id: 'streak_7', name: 'Unstoppable', icon: '🚀', rarity: 'epic', condition: '7 day streak', check: (stats) => stats.streak >= 7 },
-            { id: 'all_done', name: 'Perfect Day', icon: '💯', rarity: 'epic', condition: 'Complete all tasks in a day', check: (stats) => stats.perfectDays >= 1 },
-            { id: 'twenty_tasks', name: 'Productivity Guru', icon: '🧠', rarity: 'epic', condition: 'Complete 20 tasks', check: (stats) => stats.totalCompleted >= 20 },
-            { id: 'streak_14', name: 'Diamond Hands', icon: '💎', rarity: 'legendary', condition: '14 day streak', check: (stats) => stats.streak >= 14 },
-            { id: 'fifty_tasks', name: 'Workaholic', icon: '🏆', rarity: 'legendary', condition: 'Complete 50 tasks', check: (stats) => stats.totalCompleted >= 50 },
-            { id: 'perfect_week', name: 'Flawless Week', icon: '👑', rarity: 'legendary', condition: '7 perfect days', check: (stats) => stats.perfectDays >= 7 },
-            { id: 'streak_30', name: 'Satoshi Nakamoto', icon: '₿', rarity: 'legendary', condition: '30 day streak', check: (stats) => stats.streak >= 30 },
-            { id: 'hundred_tasks', name: 'CEO of Productivity', icon: '🌟', rarity: 'legendary', condition: 'Complete 100 tasks', check: (stats) => stats.totalCompleted >= 100 },
+            { id: 'first_task', name: 'First Step', icon: '👣', rarity: 'common', condition: 'Complete 1 task' },
+            { id: 'five_tasks', name: 'Rising Star', icon: '⭐', rarity: 'common', condition: 'Complete 5 tasks' },
+            { id: 'streak_3', name: 'Hot Streak', icon: '🔥', rarity: 'rare', condition: '3 day streak' },
+            { id: 'ten_tasks', name: 'Grinder', icon: '⚙️', rarity: 'rare', condition: 'Complete 10 tasks' },
+            { id: 'streak_7', name: 'Unstoppable', icon: '🚀', rarity: 'epic', condition: '7 day streak' },
+            { id: 'all_done', name: 'Perfect Day', icon: '💯', rarity: 'epic', condition: 'Complete all daily tasks' },
+            { id: 'twenty_tasks', name: 'Productivity Guru', icon: '🧠', rarity: 'epic', condition: 'Complete 20 tasks' },
+            { id: 'streak_14', name: 'Diamond Hands', icon: '💎', rarity: 'legendary', condition: '14 day streak' },
+            { id: 'fifty_tasks', name: 'Workaholic', icon: '🏆', rarity: 'legendary', condition: 'Complete 50 tasks' },
+            { id: 'perfect_week', name: 'Flawless Week', icon: '👑', rarity: 'legendary', condition: '7 perfect days' },
+            { id: 'streak_30', name: 'Satoshi Nakamoto', icon: '₿', rarity: 'legendary', condition: '30 day streak' },
+            { id: 'hundred_tasks', name: 'CEO of Productivity', icon: '🌟', rarity: 'legendary', condition: 'Complete 100 tasks' },
         ];
 
         // === STATE ===
@@ -792,7 +792,6 @@
         const progressText = document.getElementById('progressText');
         const currentDate = document.getElementById('currentDate');
 
-        // Crypto
         const btcPrice = document.getElementById('btcPrice');
         const btcChange = document.getElementById('btcChange');
         const ethPrice = document.getElementById('ethPrice');
@@ -803,13 +802,13 @@
         const tonChange = document.getElementById('tonChange');
         const cryptoUpdated = document.getElementById('cryptoUpdated');
 
-        // Auth
         const authForm = document.getElementById('authForm');
         const userProfile = document.getElementById('userProfile');
         const emailInput = document.getElementById('emailInput');
         const passwordInput = document.getElementById('passwordInput');
         const loginBtn = document.getElementById('loginBtn');
         const registerBtn = document.getElementById('registerBtn');
+        const demoBtn = document.getElementById('demoBtn');
         const logoutBtn = document.getElementById('logoutBtn');
         const userName = document.getElementById('userName');
         const userEmail = document.getElementById('userEmail');
@@ -818,8 +817,8 @@
         const completedTasksEl = document.getElementById('completedTasks');
         const streakDaysEl = document.getElementById('streakDays');
 
-        // NFT
         const nftGrid = document.getElementById('nftGrid');
+        const nftPreviewGrid = document.getElementById('nftPreviewGrid');
         const nftCount = document.getElementById('nftCount');
         const nftTotal = document.getElementById('nftTotal');
         const nftOverlay = document.getElementById('nftOverlay');
@@ -835,6 +834,31 @@
             return currentUser.nfts || [];
         }
 
+        function renderNFTGrid(container, ownedIds) {
+            container.innerHTML = '';
+            nftCollection.forEach(nft => {
+                const owned = ownedIds.includes(nft.id);
+                const card = document.createElement('div');
+                card.className = `nft-card ${owned ? 'owned' : 'locked'}`;
+                card.innerHTML = `
+                    ${!owned ? '<span class="nft-locked-icon">🔒</span>' : ''}
+                    <div class="nft-icon">${nft.icon}</div>
+                    <div class="nft-name">${nft.name}</div>
+                    <span class="nft-rarity rarity-${nft.rarity}">${nft.rarity}</span>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateNFTDisplay() {
+            if (currentUser) {
+                const ownedNFTs = getUserNFTs();
+                renderNFTGrid(nftGrid, ownedNFTs);
+                nftCount.textContent = ownedNFTs.length;
+                nftTotal.textContent = nftCollection.length;
+            }
+        }
+
         function checkNewNFTs() {
             if (!currentUser) return;
             
@@ -848,13 +872,12 @@
             let newNFTs = [];
 
             nftCollection.forEach(nft => {
-                if (!ownedNFTs.includes(nft.id) && nft.check(stats)) {
+                if (!ownedNFTs.includes(nft.id) && checkNFTCondition(nft.id, stats)) {
                     newNFTs.push(nft);
                 }
             });
 
             if (newNFTs.length > 0) {
-                // Award the first new NFT
                 const awarded = newNFTs[0];
                 if (!currentUser.nfts) currentUser.nfts = [];
                 currentUser.nfts.push(awarded.id);
@@ -862,7 +885,25 @@
                 showNFTPopup(awarded);
             }
 
-            renderNFTGrid();
+            updateNFTDisplay();
+        }
+
+        function checkNFTCondition(id, stats) {
+            const conditions = {
+                'first_task': stats.totalCompleted >= 1,
+                'five_tasks': stats.totalCompleted >= 5,
+                'streak_3': stats.streak >= 3,
+                'ten_tasks': stats.totalCompleted >= 10,
+                'streak_7': stats.streak >= 7,
+                'all_done': stats.perfectDays >= 1,
+                'twenty_tasks': stats.totalCompleted >= 20,
+                'streak_14': stats.streak >= 14,
+                'fifty_tasks': stats.totalCompleted >= 50,
+                'perfect_week': stats.perfectDays >= 7,
+                'streak_30': stats.streak >= 30,
+                'hundred_tasks': stats.totalCompleted >= 100,
+            };
+            return conditions[id] || false;
         }
 
         function showNFTPopup(nft) {
@@ -879,35 +920,8 @@
                 nftOverlay.classList.remove('show');
                 nftPopup.classList.remove('show');
                 nftPopupOpen = false;
-                renderNFTGrid();
+                updateNFTDisplay();
             };
-        }
-
-        function renderNFTGrid() {
-            if (!currentUser) {
-                nftGrid.innerHTML = '<div style="font-size:10px;color:rgba(255,255,255,0.4);text-align:center;grid-column:span 3;">Sign in to collect</div>';
-                nftCount.textContent = '0';
-                nftTotal.textContent = nftCollection.length;
-                return;
-            }
-
-            const ownedNFTs = getUserNFTs();
-            nftGrid.innerHTML = '';
-            nftCount.textContent = ownedNFTs.length;
-            nftTotal.textContent = nftCollection.length;
-
-            nftCollection.forEach(nft => {
-                const owned = ownedNFTs.includes(nft.id);
-                const card = document.createElement('div');
-                card.className = `nft-card ${owned ? 'owned' : 'locked'}`;
-                card.innerHTML = `
-                    ${!owned ? '<span class="nft-locked-icon">🔒</span>' : ''}
-                    <div class="nft-icon">${nft.icon}</div>
-                    <div class="nft-name">${nft.name}</div>
-                    <span class="nft-rarity rarity-${nft.rarity}">${nft.rarity}</span>
-                `;
-                nftGrid.appendChild(card);
-            });
         }
 
         function saveCurrentUser() {
@@ -963,7 +977,6 @@
             localStorage.setItem('dayflow_currentUser', JSON.stringify(user));
             updateAuthUI();
             loadUserTasks();
-            renderNFTGrid();
         }
 
         function logout() {
@@ -973,7 +986,6 @@
             tasks = [];
             saveTasks();
             renderTasks();
-            renderNFTGrid();
         }
 
         function updateAuthUI() {
@@ -984,10 +996,12 @@
                 userEmail.textContent = currentUser.email;
                 userAvatar.textContent = currentUser.name.charAt(0).toUpperCase() + '😎';
                 updateUserStats();
-                renderNFTGrid();
+                updateNFTDisplay();
             } else {
                 authForm.style.display = 'block';
                 userProfile.style.display = 'none';
+                // Show preview grid for guests
+                renderNFTGrid(nftPreviewGrid, []);
             }
         }
 
@@ -1018,7 +1032,23 @@
             renderTasks();
         }
 
-        // Auth event handlers
+        // Demo mode
+        function activateDemoMode() {
+            const demoUser = {
+                id: 'demo_user',
+                email: 'demo@dayflow.app',
+                name: 'Demo User',
+                totalTasksCompleted: 5,
+                streak: 4,
+                perfectDays: 1,
+                nfts: ['first_task', 'five_tasks', 'streak_3'],
+                createdAt: new Date().toISOString(),
+                password: 'demo'
+            };
+            setCurrentUser(demoUser);
+        }
+
+        // Event handlers
         loginBtn.addEventListener('click', () => {
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
@@ -1042,6 +1072,7 @@
             }
         });
 
+        demoBtn.addEventListener('click', activateDemoMode);
         logoutBtn.addEventListener('click', logout);
         passwordInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') loginBtn.click(); });
         nftOverlay.addEventListener('click', () => {
@@ -1105,7 +1136,6 @@
             progressText.textContent = `${completed}/${total}`;
             if (currentUser) {
                 updateUserStats();
-                // Check perfect day
                 if (total > 0 && completed === total) {
                     if (!currentUser.perfectDays) currentUser.perfectDays = 0;
                     const today = new Date().toDateString();
@@ -1186,7 +1216,7 @@
             updateAuthUI();
             updateDate();
             loadUserTasks();
-            renderNFTGrid();
+            updateNFTDisplay();
             fetchCryptoPrices();
             setInterval(fetchCryptoPrices, 60000);
         }
