@@ -57,6 +57,18 @@
             flex-direction: column;
             min-height: 90vh;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: appEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes appEntry {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         /* Header */
@@ -66,6 +78,18 @@
             padding: 24px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideDown 0.5s ease 0.1s both;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header h1 {
@@ -73,6 +97,12 @@
             font-weight: 600;
             margin-bottom: 4px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
         }
 
         .header .date {
@@ -93,6 +123,18 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
+            animation: slideUp 0.5s ease 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .crypto-item {
@@ -105,6 +147,23 @@
             transition: all 0.25s ease;
             border: 1px solid rgba(255, 255, 255, 0.06);
             cursor: default;
+            animation: fadeInScale 0.4s ease both;
+        }
+
+        .crypto-item:nth-child(1) { animation-delay: 0.3s; }
+        .crypto-item:nth-child(2) { animation-delay: 0.35s; }
+        .crypto-item:nth-child(3) { animation-delay: 0.4s; }
+        .crypto-item:nth-child(4) { animation-delay: 0.45s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .crypto-item:hover {
@@ -125,26 +184,32 @@
             flex-shrink: 0;
             position: relative;
             color: #fff;
+            animation: iconGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes iconGlow {
+            0%, 100% { box-shadow: 0 4px 14px rgba(247, 147, 26, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(247, 147, 26, 0.7); }
         }
 
         .icon-btc {
             background: linear-gradient(135deg, #f7931a 0%, #e2761a 100%);
-            box-shadow: 0 4px 14px rgba(247, 147, 26, 0.5);
+            animation-delay: 0s;
         }
 
         .icon-eth {
             background: linear-gradient(135deg, #627eea 0%, #454a75 100%);
-            box-shadow: 0 4px 14px rgba(98, 126, 234, 0.5);
+            animation-delay: 0.5s;
         }
 
         .icon-sol {
             background: linear-gradient(135deg, #9945ff 0%, #14f195 100%);
-            box-shadow: 0 4px 14px rgba(153, 69, 255, 0.5);
+            animation-delay: 1s;
         }
 
         .icon-ton {
             background: linear-gradient(135deg, #0088cc 0%, #005f99 100%);
-            box-shadow: 0 4px 14px rgba(0, 136, 204, 0.5);
+            animation-delay: 1.5s;
         }
 
         .crypto-info {
@@ -180,6 +245,17 @@
             font-weight: 700;
             color: #ffffff;
             letter-spacing: 0.2px;
+            transition: all 0.3s ease;
+        }
+
+        .crypto-price.updating {
+            animation: priceUpdate 0.5s ease;
+        }
+
+        @keyframes priceUpdate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); color: #f9d423; }
+            100% { transform: scale(1); }
         }
 
         .crypto-change-badge {
@@ -190,11 +266,18 @@
             font-weight: 700;
             padding: 2px 6px;
             border-radius: 6px;
+            transition: all 0.3s ease;
         }
 
         .crypto-change-badge.up {
             background: rgba(76, 175, 132, 0.3);
             color: #5ddf90;
+            animation: pulseGreen 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGreen {
+            0%, 100% { background: rgba(76, 175, 132, 0.3); }
+            50% { background: rgba(76, 175, 132, 0.5); }
         }
 
         .crypto-change-badge.down {
@@ -208,12 +291,14 @@
             color: rgba(255, 255, 255, 0.5);
             margin: -4px 0 6px 0;
             letter-spacing: 0.3px;
+            animation: slideUp 0.5s ease 0.5s both;
         }
 
         /* Progress bar */
         .progress-section {
             padding: 16px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.5s ease 0.6s both;
         }
 
         .progress-label {
@@ -236,8 +321,25 @@
             height: 100%;
             background: linear-gradient(90deg, #f9d423, #ff4e50);
             border-radius: 10px;
-            transition: width 0.3s ease;
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             width: 0%;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         /* Add task form */
@@ -246,6 +348,7 @@
             gap: 10px;
             padding: 16px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.5s ease 0.7s both;
         }
 
         .add-section input {
@@ -256,7 +359,7 @@
             font-size: 15px;
             background: rgba(255, 255, 255, 0.15);
             color: #fff;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .add-section input::placeholder {
@@ -267,6 +370,7 @@
             outline: none;
             border-color: #f9d423;
             background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 20px rgba(249, 212, 35, 0.2);
         }
 
         .add-section button {
@@ -278,12 +382,16 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .add-section button:hover {
             background: #ffe066;
-            transform: scale(1.05);
+            transform: scale(1.1);
+        }
+
+        .add-section button:active {
+            transform: scale(0.95);
         }
 
         /* Task list */
@@ -302,14 +410,34 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             margin-bottom: 8px;
-            transition: all 0.2s;
-            animation: fadeIn 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: taskEntry 0.4s ease both;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes taskEntry {
+            from {
+                opacity: 0;
+                transform: translateX(-30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .task-item.removing {
+            animation: taskRemove 0.3s ease forwards;
+        }
+
+        @keyframes taskRemove {
+            to {
+                opacity: 0;
+                transform: translateX(100px) scale(0.8);
+                margin-bottom: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
         }
 
         .task-item.completed {
@@ -332,12 +460,24 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .task-checkbox:hover {
+            border-color: #f9d423;
+            transform: scale(1.2);
         }
 
         .task-item.completed .task-checkbox {
             background: #f9d423;
             border-color: #f9d423;
+            animation: checkboxPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes checkboxPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
         .task-item.completed .task-checkbox::after {
@@ -345,6 +485,18 @@
             color: #1a1a2e;
             font-size: 14px;
             font-weight: bold;
+            animation: checkmark 0.3s ease 0.1s both;
+        }
+
+        @keyframes checkmark {
+            from {
+                opacity: 0;
+                transform: scale(0) rotate(-90deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
         }
 
         .task-text {
@@ -361,12 +513,20 @@
             font-size: 18px;
             padding: 4px 8px;
             border-radius: 6px;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .delete-btn:hover {
             color: #ff4e50;
             background: rgba(255, 78, 80, 0.2);
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+            75% { transform: rotate(-10deg); }
         }
 
         /* Empty state */
@@ -374,11 +534,29 @@
             text-align: center;
             padding: 40px 20px;
             color: rgba(255, 255, 255, 0.6);
+            animation: floatIn 0.6s ease;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .empty-state .icon {
             font-size: 48px;
             margin-bottom: 12px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* Footer signature */
@@ -390,11 +568,30 @@
             letter-spacing: 0.5px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             background: rgba(0, 0, 0, 0.15);
+            transition: color 0.3s ease;
         }
 
         .footer-signature:hover {
             color: rgba(249, 212, 35, 0.7);
-            transition: color 0.3s ease;
+        }
+
+        /* Celebration particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: particleUp 0.8s ease-out forwards;
+        }
+
+        @keyframes particleUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0);
+            }
         }
     </style>
 </head>
@@ -518,6 +715,37 @@
         const tonChange = document.getElementById('tonChange');
         const cryptoUpdated = document.getElementById('cryptoUpdated');
 
+        // === CELEBRATION PARTICLES ===
+        function createParticle(x, y) {
+            const emojis = ['✨', '🌟', '💫', '⭐', '🔥'];
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.fontSize = (20 + Math.random() * 20) + 'px';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 800);
+        }
+
+        function celebrateCompletion() {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.completed).length;
+            
+            if (total > 0 && completed === total) {
+                const rect = progressFill.getBoundingClientRect();
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        createParticle(
+                            rect.left + Math.random() * rect.width,
+                            rect.top + Math.random() * rect.height
+                        );
+                    }, i * 100);
+                }
+            }
+        }
+
         // === FETCH CRYPTO PRICES ===
         async function fetchCryptoPrices() {
             try {
@@ -536,19 +764,27 @@
                         const price = coinData.usd;
                         const change = coinData.usd_24h_change;
 
+                        let newPrice;
                         if (price >= 1000) {
-                            priceEl.textContent = '$' + price.toLocaleString('en-US', { 
+                            newPrice = '$' + price.toLocaleString('en-US', { 
                                 minimumFractionDigits: 0, 
                                 maximumFractionDigits: 0 
                             });
                         } else if (price >= 1) {
-                            priceEl.textContent = '$' + price.toLocaleString('en-US', { 
+                            newPrice = '$' + price.toLocaleString('en-US', { 
                                 minimumFractionDigits: 2, 
                                 maximumFractionDigits: 2 
                             });
                         } else {
-                            priceEl.textContent = '$' + price.toFixed(decimals);
+                            newPrice = '$' + price.toFixed(decimals);
                         }
+
+                        // Animate price change
+                        if (priceEl.textContent !== newPrice && priceEl.textContent !== 'Loading...') {
+                            priceEl.classList.add('updating');
+                            setTimeout(() => priceEl.classList.remove('updating'), 500);
+                        }
+                        priceEl.textContent = newPrice;
 
                         if (change !== null && change !== undefined) {
                             const changeNum = parseFloat(change);
@@ -634,9 +870,10 @@
                 return;
             }
 
-            tasks.forEach(task => {
+            tasks.forEach((task, index) => {
                 const li = document.createElement('li');
                 li.className = `task-item ${task.completed ? 'completed' : ''}`;
+                li.style.animationDelay = (index * 0.05) + 's';
                 li.innerHTML = `
                     <div class="task-checkbox" data-id="${task.id}"></div>
                     <span class="task-text">${escapeHtml(task.text)}</span>
@@ -680,14 +917,21 @@
                 task.completed = !task.completed;
                 saveTasks();
                 renderTasks();
+                celebrateCompletion();
             }
         }
 
         // === DELETE TASK ===
         function deleteTask(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            saveTasks();
-            renderTasks();
+            const taskElement = taskList.querySelector(`[data-id="${id}"]`).closest('.task-item');
+            if (taskElement) {
+                taskElement.classList.add('removing');
+                setTimeout(() => {
+                    tasks = tasks.filter(t => t.id !== id);
+                    saveTasks();
+                    renderTasks();
+                }, 300);
+            }
         }
 
         // === EVENT HANDLERS ===
@@ -718,6 +962,9 @@
             loadTasks();
             renderTasks();
             fetchCryptoPrices();
+            
+            // Update crypto every 60 seconds
+            setInterval(fetchCryptoPrices, 60000);
         }
 
         init();
