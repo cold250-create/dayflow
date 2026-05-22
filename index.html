@@ -42,20 +42,32 @@
             z-index: 0;
         }
 
-        /* Main layout */
+        /* Main layout - центрируем основную ленту */
         .main-layout {
             position: relative;
             z-index: 1;
             display: flex;
-            gap: 15px;
+            justify-content: center;
             align-items: flex-start;
-            max-width: 780px;
             width: 100%;
+            max-width: 800px;
         }
 
-        /* Auth sidebar */
+        /* Контейнер для центрирования */
+        .center-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            position: relative;
+        }
+
+        /* Auth sidebar - слева от основного приложения */
         .auth-sidebar {
-            flex: 0 0 280px;
+            position: absolute;
+            right: 100%;
+            margin-right: 15px;
+            top: 0;
+            width: 280px;
             background: rgba(20, 25, 45, 0.55);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -63,9 +75,8 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 30px 24px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            position: sticky;
-            top: 20px;
             animation: slideInLeft 0.5s ease;
+            z-index: 2;
         }
 
         @keyframes slideInLeft {
@@ -263,11 +274,9 @@
             letter-spacing: 0.5px;
         }
 
-        /* App */
+        /* App - всегда по центру */
         .app {
-            flex: 1;
-            width: 100%;
-            max-width: 480px;
+            width: 480px;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -662,164 +671,166 @@
         }
 
         /* Responsive */
-        @media (max-width: 700px) {
+        @media (max-width: 780px) {
             .auth-sidebar {
                 display: none;
             }
             
-            .main-layout {
-                max-width: 480px;
+            .center-wrapper {
+                position: static;
             }
         }
     </style>
 </head>
 <body>
     <div class="main-layout">
-        <!-- Auth sidebar -->
-        <div class="auth-sidebar" id="authSidebar">
-            <!-- Not logged in -->
-            <div id="authForm">
-                <div class="auth-header">
-                    <div class="auth-icon">👤</div>
-                    <h2>Welcome</h2>
-                    <p>Sign in to sync your tasks</p>
+        <div class="center-wrapper">
+            <!-- Auth sidebar - позиционирована слева от основного приложения -->
+            <div class="auth-sidebar" id="authSidebar">
+                <!-- Not logged in -->
+                <div id="authForm">
+                    <div class="auth-header">
+                        <div class="auth-icon">👤</div>
+                        <h2>Welcome</h2>
+                        <p>Sign in to sync your tasks</p>
+                    </div>
+                    <div class="auth-form">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="emailInput" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="passwordInput" placeholder="••••••••">
+                        </div>
+                        <button class="auth-btn" id="loginBtn">Sign In</button>
+                        <div class="auth-divider">
+                            <span>or</span>
+                        </div>
+                        <button class="auth-btn secondary" id="registerBtn">Create Account</button>
+                    </div>
                 </div>
-                <div class="auth-form">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="emailInput" placeholder="your@email.com">
+
+                <!-- Logged in -->
+                <div id="userProfile" style="display: none;">
+                    <div class="user-profile">
+                        <div class="user-avatar" id="userAvatar">😎</div>
+                        <div class="user-name" id="userName">User</div>
+                        <div class="user-email" id="userEmail">user@email.com</div>
+                        <div class="user-stats">
+                            <div class="user-stat">
+                                <div class="user-stat-value" id="totalTasks">0</div>
+                                <div class="user-stat-label">Tasks</div>
+                            </div>
+                            <div class="user-stat">
+                                <div class="user-stat-value" id="completedTasks">0</div>
+                                <div class="user-stat-label">Done</div>
+                            </div>
+                            <div class="user-stat">
+                                <div class="user-stat-value" id="streakDays">0</div>
+                                <div class="user-stat-label">Streak</div>
+                            </div>
+                        </div>
+                        <button class="auth-btn secondary" id="logoutBtn">Sign Out</button>
                     </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="passwordInput" placeholder="••••••••">
-                    </div>
-                    <button class="auth-btn" id="loginBtn">Sign In</button>
-                    <div class="auth-divider">
-                        <span>or</span>
-                    </div>
-                    <button class="auth-btn secondary" id="registerBtn">Create Account</button>
                 </div>
             </div>
 
-            <!-- Logged in -->
-            <div id="userProfile" style="display: none;">
-                <div class="user-profile">
-                    <div class="user-avatar" id="userAvatar">😎</div>
-                    <div class="user-name" id="userName">User</div>
-                    <div class="user-email" id="userEmail">user@email.com</div>
-                    <div class="user-stats">
-                        <div class="user-stat">
-                            <div class="user-stat-value" id="totalTasks">0</div>
-                            <div class="user-stat-label">Tasks</div>
-                        </div>
-                        <div class="user-stat">
-                            <div class="user-stat-value" id="completedTasks">0</div>
-                            <div class="user-stat-label">Done</div>
-                        </div>
-                        <div class="user-stat">
-                            <div class="user-stat-value" id="streakDays">0</div>
-                            <div class="user-stat-label">Streak</div>
-                        </div>
-                    </div>
-                    <button class="auth-btn secondary" id="logoutBtn">Sign Out</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main app -->
-        <div class="app">
-            <!-- Header -->
-            <div class="header">
-                <h1>📋 DayFlow</h1>
-                <div class="date" id="currentDate"></div>
-            </div>
-
-            <!-- Crypto widget -->
-            <div class="crypto-widget">
-                <div class="crypto-item">
-                    <div class="crypto-icon-wrapper icon-btc">₿</div>
-                    <div class="crypto-info">
-                        <span class="crypto-symbol">BTC</span>
-                        <span class="crypto-name">Bitcoin</span>
-                        <div class="crypto-price-row">
-                            <span class="crypto-price" id="btcPrice">Loading...</span>
-                            <span class="crypto-change-badge up" id="btcChange"></span>
-                        </div>
-                    </div>
+            <!-- Main app - всегда по центру -->
+            <div class="app">
+                <!-- Header -->
+                <div class="header">
+                    <h1>📋 DayFlow</h1>
+                    <div class="date" id="currentDate"></div>
                 </div>
 
-                <div class="crypto-item">
-                    <div class="crypto-icon-wrapper icon-eth">Ξ</div>
-                    <div class="crypto-info">
-                        <span class="crypto-symbol">ETH</span>
-                        <span class="crypto-name">Ethereum</span>
-                        <div class="crypto-price-row">
-                            <span class="crypto-price" id="ethPrice">Loading...</span>
-                            <span class="crypto-change-badge up" id="ethChange"></span>
+                <!-- Crypto widget -->
+                <div class="crypto-widget">
+                    <div class="crypto-item">
+                        <div class="crypto-icon-wrapper icon-btc">₿</div>
+                        <div class="crypto-info">
+                            <span class="crypto-symbol">BTC</span>
+                            <span class="crypto-name">Bitcoin</span>
+                            <div class="crypto-price-row">
+                                <span class="crypto-price" id="btcPrice">Loading...</span>
+                                <span class="crypto-change-badge up" id="btcChange"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="crypto-item">
-                    <div class="crypto-icon-wrapper icon-sol">◎</div>
-                    <div class="crypto-info">
-                        <span class="crypto-symbol">SOL</span>
-                        <span class="crypto-name">Solana</span>
-                        <div class="crypto-price-row">
-                            <span class="crypto-price" id="solPrice">Loading...</span>
-                            <span class="crypto-change-badge up" id="solChange"></span>
+                    <div class="crypto-item">
+                        <div class="crypto-icon-wrapper icon-eth">Ξ</div>
+                        <div class="crypto-info">
+                            <span class="crypto-symbol">ETH</span>
+                            <span class="crypto-name">Ethereum</span>
+                            <div class="crypto-price-row">
+                                <span class="crypto-price" id="ethPrice">Loading...</span>
+                                <span class="crypto-change-badge up" id="ethChange"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="crypto-item">
+                        <div class="crypto-icon-wrapper icon-sol">◎</div>
+                        <div class="crypto-info">
+                            <span class="crypto-symbol">SOL</span>
+                            <span class="crypto-name">Solana</span>
+                            <div class="crypto-price-row">
+                                <span class="crypto-price" id="solPrice">Loading...</span>
+                                <span class="crypto-change-badge up" id="solChange"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="crypto-item">
+                        <div class="crypto-icon-wrapper icon-ton">💎</div>
+                        <div class="crypto-info">
+                            <span class="crypto-symbol">TON</span>
+                            <span class="crypto-name">Toncoin</span>
+                            <div class="crypto-price-row">
+                                <span class="crypto-price" id="tonPrice">Loading...</span>
+                                <span class="crypto-change-badge up" id="tonChange"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="crypto-updated" id="cryptoUpdated">Loading rates...</div>
 
-                <div class="crypto-item">
-                    <div class="crypto-icon-wrapper icon-ton">💎</div>
-                    <div class="crypto-info">
-                        <span class="crypto-symbol">TON</span>
-                        <span class="crypto-name">Toncoin</span>
-                        <div class="crypto-price-row">
-                            <span class="crypto-price" id="tonPrice">Loading...</span>
-                            <span class="crypto-change-badge up" id="tonChange"></span>
-                        </div>
+                <!-- Progress -->
+                <div class="progress-section">
+                    <div class="progress-label">
+                        <span>Today's progress</span>
+                        <span id="progressText">0/0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
                     </div>
                 </div>
-            </div>
-            <div class="crypto-updated" id="cryptoUpdated">Loading rates...</div>
 
-            <!-- Progress -->
-            <div class="progress-section">
-                <div class="progress-label">
-                    <span>Today's progress</span>
-                    <span id="progressText">0/0</span>
+                <!-- Add task -->
+                <div class="add-section">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        placeholder="Add a task..."
+                        maxlength="100"
+                    >
+                    <button id="addBtn">＋</button>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+
+                <!-- Task list -->
+                <ul class="task-list" id="taskList">
+                    <li class="empty-state">
+                        <div class="icon">📝</div>
+                        <p>No tasks yet</p>
+                        <p style="font-size:13px;">Add your first task above</p>
+                    </li>
+                </ul>
+
+                <!-- Footer signature -->
+                <div class="footer-signature">
+                    Coded & designed by @cold250
                 </div>
-            </div>
-
-            <!-- Add task -->
-            <div class="add-section">
-                <input 
-                    type="text" 
-                    id="taskInput" 
-                    placeholder="Add a task..."
-                    maxlength="100"
-                >
-                <button id="addBtn">＋</button>
-            </div>
-
-            <!-- Task list -->
-            <ul class="task-list" id="taskList">
-                <li class="empty-state">
-                    <div class="icon">📝</div>
-                    <p>No tasks yet</p>
-                    <p style="font-size:13px;">Add your first task above</p>
-                </li>
-            </ul>
-
-            <!-- Footer signature -->
-            <div class="footer-signature">
-                Coded & designed by @cold250
             </div>
         </div>
     </div>
@@ -869,7 +880,6 @@
         }
 
         function login(email, password) {
-            // Simple local auth (no server needed)
             const users = JSON.parse(localStorage.getItem('dayflow_users') || '{}');
             const userId = Object.keys(users).find(id => users[id].email === email);
             
@@ -1011,7 +1021,6 @@
 
         logoutBtn.addEventListener('click', logout);
 
-        // Enter key to submit
         passwordInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') loginBtn.click();
         });
