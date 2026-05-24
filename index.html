@@ -49,7 +49,6 @@
             justify-content: center;
             align-items: flex-start;
             width: 100%;
-            max-width: 800px;
         }
 
         .center-wrapper {
@@ -59,16 +58,16 @@
             position: relative;
         }
 
-        /* Auth sidebar */
+        /* Auth sidebar - LEFT (same as before) */
         .auth-sidebar {
             position: absolute;
             right: 100%;
             margin-right: 15px;
             top: 0;
             width: 280px;
-            background: rgba(20, 25, 45, 0.55);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 24px 20px;
@@ -78,354 +77,48 @@
             overflow-y: auto;
         }
 
-        .auth-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .auth-header .auth-icon {
-            font-size: 40px;
-            margin-bottom: 8px;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .auth-header h2 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .auth-header p {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group label {
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-group input {
-            padding: 12px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input::placeholder { color: rgba(255, 255, 255, 0.3); }
-        .form-group input:focus {
-            outline: none;
-            border-color: #f9d423;
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px rgba(249, 212, 35, 0.15);
-        }
-
-        .auth-btn {
-            padding: 13px;
-            background: linear-gradient(135deg, #f9d423, #e6b800);
-            color: #1a1a2e;
-            border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            margin-top: 4px;
-        }
-
-        .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3); }
-        .auth-btn:active { transform: scale(0.97); }
-
-        .auth-btn.secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .auth-btn.secondary:hover {
-            background: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
-        }
-
-        .auth-divider {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 4px 0;
-        }
-
-        .auth-divider::before, .auth-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .auth-divider span {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* User profile */
-        .user-profile {
-            text-align: center;
-        }
-
-        .user-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f9d423, #e6b800);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 12px;
-            box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3);
-            animation: iconGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3); }
-            50% { box-shadow: 0 8px 40px rgba(249, 212, 35, 0.6); }
-        }
-
-        .user-name { font-size: 16px; font-weight: 600; color: #fff; }
-        .user-email { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin-bottom: 12px; }
-
-        .user-stats {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .user-stat { text-align: center; }
-        .user-stat-value { font-size: 18px; font-weight: 700; color: #f9d423; }
-        .user-stat-label { font-size: 9px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; letter-spacing: 0.5px; }
-
-        /* NFT Section */
-        .nft-section {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nft-section-title {
-            font-size: 12px;
-            font-weight: 700;
-            color: #f9d423;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .nft-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .nft-card {
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 10px 8px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .nft-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .nft-card.owned {
-            border-color: rgba(249, 212, 35, 0.4);
-            background: rgba(249, 212, 35, 0.08);
-        }
-
-        .nft-card.locked {
-            opacity: 0.4;
-            filter: grayscale(0.5);
-        }
-
-        .nft-icon {
-            font-size: 28px;
-            margin-bottom: 4px;
-            animation: nftFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes nftFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        .nft-name {
-            font-size: 9px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 2px;
-        }
-
-        .nft-rarity {
-            font-size: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 1px 6px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-
-        .rarity-common { background: rgba(158, 158, 158, 0.3); color: #9e9e9e; }
-        .rarity-rare { background: rgba(66, 165, 245, 0.3); color: #42a5f5; }
-        .rarity-epic { background: rgba(171, 71, 188, 0.3); color: #ab47bc; }
-        .rarity-legendary { 
-            background: linear-gradient(135deg, rgba(249, 212, 35, 0.4), rgba(255, 78, 80, 0.4));
-            color: #f9d423;
-            animation: legendaryGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes legendaryGlow {
-            0%, 100% { box-shadow: 0 0 8px rgba(249, 212, 35, 0.3); }
-            50% { box-shadow: 0 0 16px rgba(249, 212, 35, 0.6); }
-        }
-
-        .nft-locked-icon {
+        /* Friends sidebar - RIGHT (mirror of auth-sidebar) */
+        .friends-sidebar {
             position: absolute;
-            top: 4px;
-            right: 4px;
-            font-size: 10px;
-            opacity: 0.6;
-        }
-
-        .nft-collection-count {
-            font-size: 9px;
-            color: rgba(255,255,255,0.4);
-            text-align: center;
-        }
-
-        /* NFT Popup */
-        .nft-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: rgba(20, 25, 45, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            z-index: 1000;
-            border: 2px solid #f9d423;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .nft-popup.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .nft-popup-icon {
-            font-size: 60px;
-            animation: nftFloat 1s ease-in-out infinite;
-        }
-
-        .nft-popup-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #f9d423;
-            margin: 12px 0 6px;
-        }
-
-        .nft-popup-subtitle {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 16px;
-        }
-
-        .nft-popup-btn {
-            padding: 10px 24px;
-            background: #f9d423;
-            color: #1a1a2e;
-            border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .nft-popup-overlay {
-            position: fixed;
+            left: 100%;
+            margin-left: 15px;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 999;
-            display: none;
+            width: 280px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 24px 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .nft-popup-overlay.show {
-            display: block;
-        }
-
-        /* App */
+        /* App - centered */
         .app {
             width: 480px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             min-height: 90vh;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            z-index: 1;
         }
 
         .header {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             color: #fff;
             padding: 24px 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .header h1 {
@@ -444,14 +137,15 @@
         .crypto-widget {
             margin: 12px 20px;
             padding: 10px 12px;
-            background: rgba(20, 25, 45, 0.55);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 20, 35, 0.5);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .crypto-item {
@@ -462,13 +156,13 @@
             background: rgba(255, 255, 255, 0.06);
             border-radius: 12px;
             transition: all 0.25s ease;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             cursor: default;
         }
 
         .crypto-item:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(249, 212, 35, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(249, 212, 35, 0.4);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
@@ -486,6 +180,11 @@
             animation: iconGlow 2s ease-in-out infinite;
         }
 
+        @keyframes iconGlow {
+            0%, 100% { box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3); }
+            50% { box-shadow: 0 8px 40px rgba(249, 212, 35, 0.6); }
+        }
+
         .icon-btc { background: linear-gradient(135deg, #f7931a 0%, #e2761a 100%); }
         .icon-eth { background: linear-gradient(135deg, #627eea 0%, #454a75 100%); }
         .icon-sol { background: linear-gradient(135deg, #9945ff 0%, #14f195 100%); }
@@ -501,8 +200,8 @@
             display: inline-flex; align-items: center; gap: 2px;
             font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 6px;
         }
-        .crypto-change-badge.up { background: rgba(76, 175, 132, 0.3); color: #5ddf90; }
-        .crypto-change-badge.down { background: rgba(255, 78, 80, 0.3); color: #ff6b6e; }
+        .crypto-change-badge.up { background: rgba(76, 175, 132, 0.25); color: #5ddf90; }
+        .crypto-change-badge.down { background: rgba(255, 78, 80, 0.25); color: #ff6b6e; }
 
         .crypto-updated {
             text-align: center; font-size: 10px; color: rgba(255, 255, 255, 0.5);
@@ -511,26 +210,46 @@
 
         .progress-section {
             padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-
         .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: rgba(255, 255, 255, 0.8); }
-        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; overflow: hidden; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.15); border-radius: 10px; overflow: hidden; }
         .progress-fill {
             height: 100%; background: linear-gradient(90deg, #f9d423, #ff4e50);
             border-radius: 10px; transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); width: 0%;
         }
 
+        .login-required {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+            flex: 1;
+            gap: 16px;
+        }
+        .login-required .lock-icon { font-size: 64px; animation: bounce 2s ease-in-out infinite; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .login-required h3 { font-size: 20px; font-weight: 600; color: #fff; }
+        .login-required p { font-size: 14px; color: rgba(255, 255, 255, 0.6); max-width: 280px; line-height: 1.5; }
+
+        .logged-in-content { display: flex; flex-direction: column; flex: 1; }
+        .logged-in-content.hidden { display: none; }
+
         .add-section {
             display: flex; gap: 10px; padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
         .add-section input {
-            flex: 1; padding: 12px 16px; border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 12px; font-size: 15px; background: rgba(255, 255, 255, 0.15); color: #fff;
+            flex: 1; padding: 12px 16px; border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px; font-size: 15px; background: rgba(255, 255, 255, 0.1); color: #fff;
         }
-        .add-section input::placeholder { color: rgba(255, 255, 255, 0.5); }
-        .add-section input:focus { outline: none; border-color: #f9d423; background: rgba(255, 255, 255, 0.25); }
+        .add-section input::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .add-section input:focus { outline: none; border-color: #f9d423; background: rgba(255, 255, 255, 0.18); }
         .add-section button {
             padding: 12px 20px; background: #f9d423; color: #1a1a2e;
             border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer;
@@ -542,20 +261,18 @@
         .task-list { flex: 1; list-style: none; padding: 12px 20px; overflow-y: auto; }
         .task-item {
             display: flex; align-items: center; gap: 12px; padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.1); border-radius: 12px; margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.08); border-radius: 12px; margin-bottom: 8px;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: taskEntry 0.4s ease both; border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: taskEntry 0.4s ease both; border: 1px solid rgba(255, 255, 255, 0.06);
         }
-
         @keyframes taskEntry {
             from { opacity: 0; transform: translateX(-30px) scale(0.9); }
             to { opacity: 1; transform: translateX(0) scale(1); }
         }
-
-        .task-item.completed { opacity: 0.5; background: rgba(255, 255, 255, 0.04); }
+        .task-item.completed { opacity: 0.5; background: rgba(255, 255, 255, 0.03); }
         .task-item.completed .task-text { text-decoration: line-through; color: rgba(255, 255, 255, 0.5); }
         .task-checkbox {
-            width: 22px; height: 22px; border-radius: 6px; border: 2px solid rgba(255, 255, 255, 0.5);
+            width: 22px; height: 22px; border-radius: 6px; border: 2px solid rgba(255, 255, 255, 0.4);
             cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -577,24 +294,266 @@
         }
         .task-text { flex: 1; font-size: 15px; color: #fff; }
         .delete-btn {
-            background: none; border: none; color: rgba(255, 255, 255, 0.4);
+            background: none; border: none; color: rgba(255, 255, 255, 0.35);
             cursor: pointer; font-size: 18px; padding: 4px 8px; border-radius: 6px; transition: all 0.3s ease;
         }
         .delete-btn:hover { color: #ff4e50; background: rgba(255, 78, 80, 0.2); }
 
-        .empty-state { text-align: center; padding: 40px 20px; color: rgba(255, 255, 255, 0.6); }
+        .empty-state { text-align: center; padding: 40px 20px; color: rgba(255, 255, 255, 0.5); }
         .empty-state .icon { font-size: 48px; margin-bottom: 12px; animation: bounce 2s ease-in-out infinite; }
 
         .footer-signature {
             text-align: center; padding: 12px 20px; font-size: 11px;
-            color: rgba(255, 255, 255, 0.35); letter-spacing: 0.5px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08); background: rgba(0, 0, 0, 0.15);
+            color: rgba(255, 255, 255, 0.3); letter-spacing: 0.5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06); background: rgba(0, 0, 0, 0.1);
         }
-        .footer-signature:hover { color: rgba(249, 212, 35, 0.7); }
+        .footer-signature:hover { color: rgba(249, 212, 35, 0.6); }
 
+        /* Auth styles */
+        .auth-header, .friends-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .auth-header .auth-icon, .friends-header .friends-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        .auth-header h2, .friends-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .auth-header p, .friends-header p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group label {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-group input {
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .form-group input::placeholder { color: rgba(255, 255, 255, 0.3); }
+        .form-group input:focus {
+            outline: none;
+            border-color: #f9d423;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(249, 212, 35, 0.15);
+        }
+        .auth-btn {
+            padding: 13px;
+            background: linear-gradient(135deg, #f9d423, #e6b800);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-top: 4px;
+        }
+        .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3); }
+        .auth-btn:active { transform: scale(0.97); }
+        .auth-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .auth-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+        }
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 4px 0;
+        }
+        .auth-divider::before, .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .auth-divider span {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .user-profile { text-align: center; }
+        .user-avatar {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, #f9d423, #e6b800);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; margin: 0 auto 12px;
+            box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3);
+            animation: iconGlow 2s ease-in-out infinite;
+        }
+        .user-name { font-size: 16px; font-weight: 600; color: #fff; }
+        .user-email { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin-bottom: 12px; }
+        .user-stats { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; }
+        .user-stat { text-align: center; }
+        .user-stat-value { font-size: 18px; font-weight: 700; color: #f9d423; }
+        .user-stat-label { font-size: 9px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* NFT Section */
+        .nft-section {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nft-section-title {
+            font-size: 12px; font-weight: 700; color: #f9d423;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .nft-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .nft-card {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .nft-card:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .nft-card.owned { border-color: rgba(249, 212, 35, 0.4); background: rgba(249, 212, 35, 0.08); }
+        .nft-card.locked { opacity: 0.4; filter: grayscale(0.5); }
+        .nft-icon { font-size: 28px; margin-bottom: 4px; animation: nftFloat 3s ease-in-out infinite; }
+        @keyframes nftFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .nft-name { font-size: 9px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+        .nft-rarity {
+            font-size: 8px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; padding: 1px 6px; border-radius: 4px; display: inline-block;
+        }
+        .rarity-common { background: rgba(158, 158, 158, 0.3); color: #9e9e9e; }
+        .rarity-rare { background: rgba(66, 165, 245, 0.3); color: #42a5f5; }
+        .rarity-epic { background: rgba(171, 71, 188, 0.3); color: #ab47bc; }
+        .rarity-legendary { 
+            background: linear-gradient(135deg, rgba(249, 212, 35, 0.4), rgba(255, 78, 80, 0.4));
+            color: #f9d423; animation: legendaryGlow 2s ease-in-out infinite;
+        }
+        @keyframes legendaryGlow {
+            0%, 100% { box-shadow: 0 0 8px rgba(249, 212, 35, 0.3); }
+            50% { box-shadow: 0 0 16px rgba(249, 212, 35, 0.6); }
+        }
+        .nft-locked-icon { position: absolute; top: 4px; right: 4px; font-size: 10px; opacity: 0.6; }
+        .nft-collection-count { font-size: 9px; color: rgba(255,255,255,0.4); text-align: center; }
+
+        /* Friends styles */
+        .add-friend-form { display: flex; gap: 8px; margin-bottom: 16px; }
+        .add-friend-form input {
+            flex: 1; padding: 10px 14px; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px; font-size: 13px; background: rgba(255, 255, 255, 0.08); color: #fff;
+        }
+        .add-friend-form input::placeholder { color: rgba(255, 255, 255, 0.3); }
+        .add-friend-form input:focus { outline: none; border-color: #f9d423; background: rgba(255, 255, 255, 0.15); }
+        .add-friend-btn {
+            padding: 10px 14px; background: linear-gradient(135deg, #f9d423, #e6b800);
+            color: #1a1a2e; border: none; border-radius: 10px; font-size: 13px;
+            font-weight: 700; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
+        }
+        .add-friend-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(249, 212, 35, 0.3); }
+        .friends-list { display: flex; flex-direction: column; gap: 8px; }
+        .friend-item {
+            display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.06); border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; cursor: pointer;
+        }
+        .friend-item:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .friend-avatar {
+            width: 40px; height: 40px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; position: relative;
+        }
+        .friend-avatar.online::after {
+            content: ''; position: absolute; bottom: 0; right: 0;
+            width: 10px; height: 10px; background: #4caf84; border-radius: 50%;
+            border: 2px solid rgba(20, 25, 45, 0.8);
+        }
+        .friend-avatar.offline::after {
+            content: ''; position: absolute; bottom: 0; right: 0;
+            width: 10px; height: 10px; background: #9e9e9e; border-radius: 50%;
+            border: 2px solid rgba(20, 25, 45, 0.8);
+        }
+        .avatar-1 { background: linear-gradient(135deg, #f7931a, #e2761a); }
+        .avatar-2 { background: linear-gradient(135deg, #627eea, #454a75); }
+        .avatar-3 { background: linear-gradient(135deg, #9945ff, #14f195); }
+        .avatar-4 { background: linear-gradient(135deg, #0088cc, #005f99); }
+        .avatar-5 { background: linear-gradient(135deg, #ff6b6b, #c0392b); }
+        .avatar-6 { background: linear-gradient(135deg, #f9d423, #ff4e50); }
+        .friend-info { flex: 1; min-width: 0; }
+        .friend-name { font-size: 13px; font-weight: 600; color: #fff; }
+        .friend-status { font-size: 10px; color: rgba(255, 255, 255, 0.5); }
+        .friend-remove-btn {
+            background: none; border: none; color: rgba(255, 255, 255, 0.3);
+            cursor: pointer; font-size: 14px; padding: 4px 6px; border-radius: 4px; transition: all 0.2s ease;
+        }
+        .friend-remove-btn:hover { color: #ff4e50; background: rgba(255, 78, 80, 0.2); }
+        .no-friends { text-align: center; padding: 20px; color: rgba(255, 255, 255, 0.4); font-size: 13px; }
+        .no-friends .icon { font-size: 36px; margin-bottom: 8px; }
+
+        /* NFT Popup */
+        .nft-popup {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+            background: rgba(20, 25, 45, 0.95); backdrop-filter: blur(20px);
+            border-radius: 20px; padding: 30px; text-align: center; z-index: 1000;
+            border: 2px solid #f9d423; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .nft-popup.show { transform: translate(-50%, -50%) scale(1); }
+        .nft-popup-icon { font-size: 60px; animation: nftFloat 1s ease-in-out infinite; }
+        .nft-popup-title { font-size: 18px; font-weight: 700; color: #f9d423; margin: 12px 0 6px; }
+        .nft-popup-subtitle { font-size: 13px; color: rgba(255, 255, 255, 0.7); margin-bottom: 16px; }
+        .nft-popup-btn {
+            padding: 10px 24px; background: #f9d423; color: #1a1a2e;
+            border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 14px;
+        }
+        .nft-popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 999; display: none;
+        }
+        .nft-popup-overlay.show { display: block; }
+
+        @media (max-width: 1100px) {
+            .friends-sidebar { display: none; }
+        }
         @media (max-width: 780px) {
             .auth-sidebar { display: none; }
             .center-wrapper { position: static; }
+            .app { width: 100%; }
         }
     </style>
 </head>
@@ -610,13 +569,13 @@
 
     <div class="main-layout">
         <div class="center-wrapper">
-            <!-- Auth sidebar -->
+            <!-- Auth sidebar - LEFT -->
             <div class="auth-sidebar" id="authSidebar">
                 <div id="authForm">
                     <div class="auth-header">
                         <div class="auth-icon">👤</div>
                         <h2>Welcome</h2>
-                        <p>Sign in to earn NFTs</p>
+                        <p>Sign in to manage tasks</p>
                     </div>
                     <div class="auth-form">
                         <div class="form-group">
@@ -630,20 +589,15 @@
                         <button class="auth-btn" id="loginBtn">Sign In</button>
                         <div class="auth-divider"><span>or</span></div>
                         <button class="auth-btn secondary" id="registerBtn">Create Account</button>
-                        <button class="auth-btn secondary" id="demoBtn" style="margin-top:8px;">👀 Demo Mode (View NFTs)</button>
+                        <button class="auth-btn secondary" id="demoBtn" style="margin-top:8px;">👀 Demo Mode</button>
                     </div>
                     
-                    <!-- NFT Preview for guests -->
                     <div class="nft-section" style="margin-top:16px;">
                         <div class="nft-section-title">
                             <span>💎</span> NFT Preview <span>💎</span>
                         </div>
-                        <div class="nft-grid" id="nftPreviewGrid">
-                            <!-- Generated by JS -->
-                        </div>
-                        <div class="nft-collection-count">
-                            Sign in to start collecting!
-                        </div>
+                        <div class="nft-grid" id="nftPreviewGrid"></div>
+                        <div class="nft-collection-count">Sign in to start collecting!</div>
                     </div>
                 </div>
 
@@ -667,14 +621,11 @@
                             </div>
                         </div>
                         
-                        <!-- NFT Collection -->
                         <div class="nft-section">
                             <div class="nft-section-title">
                                 <span>💎</span> NFT Collection <span>💎</span>
                             </div>
-                            <div class="nft-grid" id="nftGrid">
-                                <!-- Generated by JS -->
-                            </div>
+                            <div class="nft-grid" id="nftGrid"></div>
                             <div class="nft-collection-count">
                                 <span id="nftCount">0</span> / <span id="nftTotal">12</span> collected
                             </div>
@@ -736,28 +687,59 @@
                 </div>
                 <div class="crypto-updated" id="cryptoUpdated">Loading rates...</div>
 
-                <div class="progress-section">
-                    <div class="progress-label">
-                        <span>Today's progress</span>
-                        <span id="progressText">0/0</span>
+                <div class="login-required" id="loginRequired">
+                    <div class="lock-icon">🔒</div>
+                    <h3>Sign In Required</h3>
+                    <p>Please sign in or create an account to add and manage your tasks</p>
+                    <button class="auth-btn" id="loginPromptBtn" style="margin-top:8px; padding: 12px 24px;">Sign In →</button>
+                </div>
+
+                <div class="logged-in-content hidden" id="loggedInContent">
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Today's progress</span>
+                            <span id="progressText">0/0</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
                     </div>
-                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-                </div>
 
-                <div class="add-section">
-                    <input type="text" id="taskInput" placeholder="Add a task..." maxlength="100">
-                    <button id="addBtn">＋</button>
-                </div>
+                    <div class="add-section">
+                        <input type="text" id="taskInput" placeholder="Add a task..." maxlength="100">
+                        <button id="addBtn">＋</button>
+                    </div>
 
-                <ul class="task-list" id="taskList">
-                    <li class="empty-state">
-                        <div class="icon">📝</div>
-                        <p>No tasks yet</p>
-                        <p style="font-size:13px;">Add your first task above</p>
-                    </li>
-                </ul>
+                    <ul class="task-list" id="taskList">
+                        <li class="empty-state">
+                            <div class="icon">📝</div>
+                            <p>No tasks yet</p>
+                            <p style="font-size:13px;">Add your first task above</p>
+                        </li>
+                    </ul>
+                </div>
 
                 <div class="footer-signature">Coded & designed by @cold250</div>
+            </div>
+
+            <!-- Friends sidebar - RIGHT (mirror of auth-sidebar positioning) -->
+            <div class="friends-sidebar" id="friendsSidebar">
+                <div class="friends-header">
+                    <div class="friends-icon">👥</div>
+                    <h2>Friends</h2>
+                    <p>Add friends to compete</p>
+                </div>
+                
+                <div class="add-friend-form">
+                    <input type="email" id="friendEmailInput" placeholder="friend@email.com">
+                    <button class="add-friend-btn" id="addFriendBtn">+ Add</button>
+                </div>
+
+                <div class="friends-list" id="friendsList">
+                    <div class="no-friends">
+                        <div class="icon">🤝</div>
+                        <p>No friends yet</p>
+                        <p style="font-size:11px;">Add friends to see their progress</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -783,6 +765,7 @@
         let tasks = [];
         let currentUser = null;
         let nftPopupOpen = false;
+        let friends = [];
 
         // === DOM elements ===
         const taskInput = document.getElementById('taskInput');
@@ -791,6 +774,9 @@
         const progressFill = document.getElementById('progressFill');
         const progressText = document.getElementById('progressText');
         const currentDate = document.getElementById('currentDate');
+        const loginRequired = document.getElementById('loginRequired');
+        const loggedInContent = document.getElementById('loggedInContent');
+        const loginPromptBtn = document.getElementById('loginPromptBtn');
 
         const btcPrice = document.getElementById('btcPrice');
         const btcChange = document.getElementById('btcChange');
@@ -828,55 +814,114 @@
         const nftPopupSubtitle = document.getElementById('nftPopupSubtitle');
         const nftPopupBtn = document.getElementById('nftPopupBtn');
 
-        // === NFT LOGIC ===
-        function getUserNFTs() {
-            if (!currentUser) return [];
-            return currentUser.nfts || [];
+        const friendEmailInput = document.getElementById('friendEmailInput');
+        const addFriendBtn = document.getElementById('addFriendBtn');
+        const friendsList = document.getElementById('friendsList');
+
+        // === FRIENDS LOGIC ===
+        const demoFriends = [
+            { id: 'friend_1', name: 'Alex Crypto', email: 'alex@crypto.io', avatarClass: 'avatar-1', avatarEmoji: '🦊', online: true },
+            { id: 'friend_2', name: 'Maria DeFi', email: 'maria@defi.io', avatarClass: 'avatar-2', avatarEmoji: '🐱', online: true },
+            { id: 'friend_3', name: 'Sam Trader', email: 'sam@trader.io', avatarClass: 'avatar-3', avatarEmoji: '🐼', online: false },
+        ];
+
+        function loadFriends() {
+            if (currentUser) {
+                const saved = localStorage.getItem('dayflow_friends_' + currentUser.id);
+                friends = saved ? JSON.parse(saved) : [...demoFriends];
+            } else {
+                friends = [];
+            }
+            renderFriends();
         }
 
+        function saveFriends() {
+            if (currentUser) {
+                localStorage.setItem('dayflow_friends_' + currentUser.id, JSON.stringify(friends));
+            }
+        }
+
+        function addFriend(email) {
+            if (!currentUser) return;
+            const trimmed = email.trim();
+            if (!trimmed) { alert('Please enter an email'); return; }
+            if (friends.some(f => f.email === trimmed)) { alert('Friend already added'); return; }
+            friends.push({
+                id: 'friend_' + Date.now(),
+                name: trimmed.split('@')[0],
+                email: trimmed,
+                avatarClass: 'avatar-' + (Math.floor(Math.random() * 6) + 1),
+                avatarEmoji: ['😎', '🦁', '🐶', '🐵', '🦄', '🐲'][Math.floor(Math.random() * 6)],
+                online: Math.random() > 0.3
+            });
+            saveFriends();
+            renderFriends();
+            friendEmailInput.value = '';
+        }
+
+        function removeFriend(id) {
+            friends = friends.filter(f => f.id !== id);
+            saveFriends();
+            renderFriends();
+        }
+
+        function renderFriends() {
+            if (!currentUser) {
+                friendsList.innerHTML = '<div class="no-friends"><div class="icon">🔒</div><p>Sign in to add friends</p></div>';
+                return;
+            }
+            if (friends.length === 0) {
+                friendsList.innerHTML = '<div class="no-friends"><div class="icon">🤝</div><p>No friends yet</p><p style="font-size:11px;">Add friends to see their progress</p></div>';
+                return;
+            }
+            friendsList.innerHTML = '';
+            friends.forEach(friend => {
+                const item = document.createElement('div');
+                item.className = 'friend-item';
+                item.innerHTML = `
+                    <div class="friend-avatar ${friend.avatarClass} ${friend.online ? 'online' : 'offline'}">${friend.avatarEmoji}</div>
+                    <div class="friend-info">
+                        <div class="friend-name">${escapeHtml(friend.name)}</div>
+                        <div class="friend-status">${friend.online ? '🟢 Online' : '⚫ Offline'}</div>
+                    </div>
+                    <button class="friend-remove-btn" data-id="${friend.id}">✕</button>
+                `;
+                friendsList.appendChild(item);
+            });
+            friendsList.querySelectorAll('.friend-remove-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => { e.stopPropagation(); removeFriend(btn.dataset.id); });
+            });
+        }
+
+        addFriendBtn.addEventListener('click', () => addFriend(friendEmailInput.value));
+        friendEmailInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') addFriend(friendEmailInput.value); });
+
+        // === NFT LOGIC ===
+        function getUserNFTs() { return currentUser ? (currentUser.nfts || []) : []; }
         function renderNFTGrid(container, ownedIds) {
             container.innerHTML = '';
             nftCollection.forEach(nft => {
                 const owned = ownedIds.includes(nft.id);
                 const card = document.createElement('div');
                 card.className = `nft-card ${owned ? 'owned' : 'locked'}`;
-                card.innerHTML = `
-                    ${!owned ? '<span class="nft-locked-icon">🔒</span>' : ''}
-                    <div class="nft-icon">${nft.icon}</div>
-                    <div class="nft-name">${nft.name}</div>
-                    <span class="nft-rarity rarity-${nft.rarity}">${nft.rarity}</span>
-                `;
+                card.innerHTML = `${!owned ? '<span class="nft-locked-icon">🔒</span>' : ''}<div class="nft-icon">${nft.icon}</div><div class="nft-name">${nft.name}</div><span class="nft-rarity rarity-${nft.rarity}">${nft.rarity}</span>`;
                 container.appendChild(card);
             });
         }
-
         function updateNFTDisplay() {
             if (currentUser) {
-                const ownedNFTs = getUserNFTs();
-                renderNFTGrid(nftGrid, ownedNFTs);
-                nftCount.textContent = ownedNFTs.length;
+                const owned = getUserNFTs();
+                renderNFTGrid(nftGrid, owned);
+                nftCount.textContent = owned.length;
                 nftTotal.textContent = nftCollection.length;
             }
         }
-
         function checkNewNFTs() {
             if (!currentUser) return;
-            
-            const stats = {
-                totalCompleted: currentUser.totalTasksCompleted || 0,
-                streak: currentUser.streak || 0,
-                perfectDays: currentUser.perfectDays || 0
-            };
-
-            const ownedNFTs = getUserNFTs();
+            const stats = { totalCompleted: currentUser.totalTasksCompleted || 0, streak: currentUser.streak || 0, perfectDays: currentUser.perfectDays || 0 };
+            const owned = getUserNFTs();
             let newNFTs = [];
-
-            nftCollection.forEach(nft => {
-                if (!ownedNFTs.includes(nft.id) && checkNFTCondition(nft.id, stats)) {
-                    newNFTs.push(nft);
-                }
-            });
-
+            nftCollection.forEach(nft => { if (!owned.includes(nft.id) && checkNFTCondition(nft.id, stats)) newNFTs.push(nft); });
             if (newNFTs.length > 0) {
                 const awarded = newNFTs[0];
                 if (!currentUser.nfts) currentUser.nfts = [];
@@ -884,135 +929,92 @@
                 saveCurrentUser();
                 showNFTPopup(awarded);
             }
-
             updateNFTDisplay();
         }
-
         function checkNFTCondition(id, stats) {
-            const conditions = {
-                'first_task': stats.totalCompleted >= 1,
-                'five_tasks': stats.totalCompleted >= 5,
-                'streak_3': stats.streak >= 3,
-                'ten_tasks': stats.totalCompleted >= 10,
-                'streak_7': stats.streak >= 7,
-                'all_done': stats.perfectDays >= 1,
-                'twenty_tasks': stats.totalCompleted >= 20,
-                'streak_14': stats.streak >= 14,
-                'fifty_tasks': stats.totalCompleted >= 50,
-                'perfect_week': stats.perfectDays >= 7,
-                'streak_30': stats.streak >= 30,
-                'hundred_tasks': stats.totalCompleted >= 100,
+            const c = {
+                'first_task': stats.totalCompleted >= 1, 'five_tasks': stats.totalCompleted >= 5,
+                'streak_3': stats.streak >= 3, 'ten_tasks': stats.totalCompleted >= 10,
+                'streak_7': stats.streak >= 7, 'all_done': stats.perfectDays >= 1,
+                'twenty_tasks': stats.totalCompleted >= 20, 'streak_14': stats.streak >= 14,
+                'fifty_tasks': stats.totalCompleted >= 50, 'perfect_week': stats.perfectDays >= 7,
+                'streak_30': stats.streak >= 30, 'hundred_tasks': stats.totalCompleted >= 100,
             };
-            return conditions[id] || false;
+            return c[id] || false;
         }
-
         function showNFTPopup(nft) {
             if (nftPopupOpen) return;
             nftPopupOpen = true;
-            
             nftPopupIcon.textContent = nft.icon;
             nftPopupTitle.textContent = nft.name + ' Unlocked!';
             nftPopupSubtitle.textContent = nft.condition;
             nftOverlay.classList.add('show');
             nftPopup.classList.add('show');
-
-            nftPopupBtn.onclick = () => {
-                nftOverlay.classList.remove('show');
-                nftPopup.classList.remove('show');
-                nftPopupOpen = false;
-                updateNFTDisplay();
-            };
+            nftPopupBtn.onclick = () => { nftOverlay.classList.remove('show'); nftPopup.classList.remove('show'); nftPopupOpen = false; updateNFTDisplay(); };
         }
-
         function saveCurrentUser() {
             if (currentUser) {
                 localStorage.setItem('dayflow_currentUser', JSON.stringify(currentUser));
                 const users = JSON.parse(localStorage.getItem('dayflow_users') || '{}');
-                if (users[currentUser.id]) {
-                    users[currentUser.id] = currentUser;
-                    localStorage.setItem('dayflow_users', JSON.stringify(users));
-                }
+                if (users[currentUser.id]) { users[currentUser.id] = currentUser; localStorage.setItem('dayflow_users', JSON.stringify(users)); }
             }
         }
 
         // === AUTH LOGIC ===
-        function generateUserId() {
-            return 'user_' + Math.random().toString(36).substr(2, 9);
-        }
-
+        function generateUserId() { return 'user_' + Math.random().toString(36).substr(2, 9); }
         function login(email, password) {
             const users = JSON.parse(localStorage.getItem('dayflow_users') || '{}');
             const userId = Object.keys(users).find(id => users[id].email === email);
-            if (userId && users[userId].password === password) {
-                setCurrentUser(users[userId]);
-                return true;
-            }
+            if (userId && users[userId].password === password) { setCurrentUser(users[userId]); return true; }
             return false;
         }
-
         function register(email, password) {
             const users = JSON.parse(localStorage.getItem('dayflow_users') || '{}');
-            const exists = Object.values(users).some(u => u.email === email);
-            if (exists) { alert('User already exists'); return false; }
-
-            const newUser = {
-                id: generateUserId(),
-                email: email,
-                password: password,
-                name: email.split('@')[0],
-                createdAt: new Date().toISOString(),
-                totalTasksCompleted: 0,
-                streak: 0,
-                perfectDays: 0,
-                nfts: []
-            };
+            if (Object.values(users).some(u => u.email === email)) { alert('User already exists'); return false; }
+            const newUser = { id: generateUserId(), email, password, name: email.split('@')[0], createdAt: new Date().toISOString(), totalTasksCompleted: 0, streak: 0, perfectDays: 0, nfts: [] };
             users[newUser.id] = newUser;
             localStorage.setItem('dayflow_users', JSON.stringify(users));
             setCurrentUser(newUser);
             return true;
         }
-
         function setCurrentUser(user) {
             currentUser = user;
             localStorage.setItem('dayflow_currentUser', JSON.stringify(user));
             updateAuthUI();
             loadUserTasks();
+            loadFriends();
+            updateContentVisibility();
         }
-
         function logout() {
             currentUser = null;
             localStorage.removeItem('dayflow_currentUser');
             updateAuthUI();
+            updateContentVisibility();
             tasks = [];
-            saveTasks();
-            renderTasks();
+            friends = [];
+            renderFriends();
         }
-
+        function updateContentVisibility() {
+            if (currentUser) { loginRequired.style.display = 'none'; loggedInContent.classList.remove('hidden'); renderTasks(); }
+            else { loginRequired.style.display = 'flex'; loggedInContent.classList.add('hidden'); }
+        }
         function updateAuthUI() {
             if (currentUser) {
-                authForm.style.display = 'none';
-                userProfile.style.display = 'block';
-                userName.textContent = currentUser.name;
-                userEmail.textContent = currentUser.email;
+                authForm.style.display = 'none'; userProfile.style.display = 'block';
+                userName.textContent = currentUser.name; userEmail.textContent = currentUser.email;
                 userAvatar.textContent = currentUser.name.charAt(0).toUpperCase() + '😎';
-                updateUserStats();
-                updateNFTDisplay();
+                updateUserStats(); updateNFTDisplay();
             } else {
-                authForm.style.display = 'block';
-                userProfile.style.display = 'none';
-                // Show preview grid for guests
+                authForm.style.display = 'block'; userProfile.style.display = 'none';
                 renderNFTGrid(nftPreviewGrid, []);
             }
         }
-
         function updateUserStats() {
             if (!currentUser) return;
-            const completed = tasks.filter(t => t.completed).length;
             totalTasksEl.textContent = tasks.length;
-            completedTasksEl.textContent = completed;
+            completedTasksEl.textContent = tasks.filter(t => t.completed).length;
             streakDaysEl.textContent = currentUser.streak || 0;
         }
-
         function loadUserTasks() {
             if (currentUser) {
                 const saved = localStorage.getItem('dayflow_tasks_' + currentUser.id);
@@ -1021,206 +1023,80 @@
                     { id: 2, text: 'Call the doctor', completed: false },
                     { id: 3, text: 'Buy groceries', completed: false },
                 ];
-            } else {
-                const saved = localStorage.getItem('dayflow_tasks');
-                tasks = saved ? JSON.parse(saved) : [
-                    { id: 1, text: 'Drink a glass of water', completed: true },
-                    { id: 2, text: 'Call the doctor', completed: false },
-                    { id: 3, text: 'Buy groceries', completed: false },
-                ];
-            }
-            renderTasks();
+            } else { tasks = []; }
+            if (currentUser) renderTasks();
         }
-
-        // Demo mode
         function activateDemoMode() {
-            const demoUser = {
-                id: 'demo_user',
-                email: 'demo@dayflow.app',
-                name: 'Demo User',
-                totalTasksCompleted: 5,
-                streak: 4,
-                perfectDays: 1,
+            setCurrentUser({
+                id: 'demo_user', email: 'demo@dayflow.app', name: 'Demo User',
+                totalTasksCompleted: 5, streak: 4, perfectDays: 1,
                 nfts: ['first_task', 'five_tasks', 'streak_3'],
-                createdAt: new Date().toISOString(),
-                password: 'demo'
-            };
-            setCurrentUser(demoUser);
+                createdAt: new Date().toISOString(), password: 'demo'
+            });
         }
 
         // Event handlers
         loginBtn.addEventListener('click', () => {
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
+            const email = emailInput.value.trim(), password = passwordInput.value.trim();
             if (!email || !password) { alert('Please enter email and password'); return; }
-            if (login(email, password)) {
-                emailInput.value = '';
-                passwordInput.value = '';
-            } else {
-                alert('Invalid email or password');
-            }
+            if (login(email, password)) { emailInput.value = ''; passwordInput.value = ''; }
+            else { alert('Invalid email or password'); }
         });
-
         registerBtn.addEventListener('click', () => {
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
+            const email = emailInput.value.trim(), password = passwordInput.value.trim();
             if (!email || !password) { alert('Please enter email and password'); return; }
             if (password.length < 4) { alert('Password must be at least 4 characters'); return; }
-            if (register(email, password)) {
-                emailInput.value = '';
-                passwordInput.value = '';
-            }
+            if (register(email, password)) { emailInput.value = ''; passwordInput.value = ''; }
         });
-
+        loginPromptBtn.addEventListener('click', () => emailInput.focus());
         demoBtn.addEventListener('click', activateDemoMode);
         logoutBtn.addEventListener('click', logout);
         passwordInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') loginBtn.click(); });
-        nftOverlay.addEventListener('click', () => {
-            if (nftPopupOpen) {
-                nftOverlay.classList.remove('show');
-                nftPopup.classList.remove('show');
-                nftPopupOpen = false;
-            }
-        });
+        nftOverlay.addEventListener('click', () => { if (nftPopupOpen) { nftOverlay.classList.remove('show'); nftPopup.classList.remove('show'); nftPopupOpen = false; } });
 
         // === FETCH CRYPTO ===
         async function fetchCryptoPrices() {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,the-open-network&vs_currencies=usd&include_24hr_change=true');
-                if (!response.ok) throw new Error('Network error');
-                const data = await response.json();
-
-                function updateCoinUI(coinData, priceEl, changeEl, decimals = 2) {
-                    if (coinData) {
-                        const price = coinData.usd;
-                        const change = coinData.usd_24h_change;
-                        if (price >= 1000) {
-                            priceEl.textContent = '$' + price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-                        } else if (price >= 1) {
-                            priceEl.textContent = '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                        } else {
-                            priceEl.textContent = '$' + price.toFixed(decimals);
-                        }
-                        if (change !== null && change !== undefined) {
-                            const changeNum = parseFloat(change);
-                            changeEl.textContent = (changeNum >= 0 ? '▲' : '▼') + ' ' + Math.abs(changeNum).toFixed(1) + '%';
-                            changeEl.className = 'crypto-change-badge ' + (changeNum >= 0 ? 'up' : 'down');
-                        }
-                    }
+                const r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,the-open-network&vs_currencies=usd&include_24hr_change=true');
+                if (!r.ok) throw new Error('Network error');
+                const d = await r.json();
+                function u(c, pe, ce, dec=2) {
+                    if(c){const p=c.usd,ch=c.usd_24h_change;
+                    pe.textContent='$'+(p>=1000?p.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}):p>=1?p.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):p.toFixed(dec));
+                    if(ch!==null&&ch!==undefined){const cn=parseFloat(ch);ce.textContent=(cn>=0?'▲':'▼')+' '+Math.abs(cn).toFixed(1)+'%';ce.className='crypto-change-badge '+(cn>=0?'up':'down');}}
                 }
-
-                updateCoinUI(data.bitcoin, btcPrice, btcChange);
-                updateCoinUI(data.ethereum, ethPrice, ethChange);
-                updateCoinUI(data.solana, solPrice, solChange);
-                updateCoinUI(data['the-open-network'], tonPrice, tonChange, 4);
-                cryptoUpdated.textContent = 'Updated: ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-            } catch (error) {
-                cryptoUpdated.textContent = 'Failed to load rates';
-            }
+                u(d.bitcoin,btcPrice,btcChange);u(d.ethereum,ethPrice,ethChange);
+                u(d.solana,solPrice,solChange);u(d['the-open-network'],tonPrice,tonChange,4);
+                cryptoUpdated.textContent='Updated: '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+            }catch(e){cryptoUpdated.textContent='Failed to load rates';}
         }
 
-        function updateDate() {
-            currentDate.textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        function updateDate(){currentDate.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+        function saveTasks(){if(currentUser)localStorage.setItem('dayflow_tasks_'+currentUser.id,JSON.stringify(tasks));}
+        function updateProgress(){
+            const t=tasks.length,c=tasks.filter(x=>x.completed).length,p=t===0?0:Math.round((c/t)*100);
+            progressFill.style.width=p+'%';progressText.textContent=`${c}/${t}`;
+            if(currentUser){updateUserStats();if(t>0&&c===t){if(!currentUser.perfectDays)currentUser.perfectDays=0;
+            const td=new Date().toDateString();if(currentUser.lastPerfectDay!==td){currentUser.perfectDays++;currentUser.lastPerfectDay=td;saveCurrentUser();}}}
         }
-
-        function saveTasks() {
-            const key = currentUser ? 'dayflow_tasks_' + currentUser.id : 'dayflow_tasks';
-            localStorage.setItem(key, JSON.stringify(tasks));
+        function renderTasks(){
+            if(!currentUser)return;taskList.innerHTML='';
+            if(tasks.length===0){taskList.innerHTML='<li class="empty-state"><div class="icon">🌟</div><p>All clear!</p><p style="font-size:13px;">Add a task and start your day</p></li>';updateProgress();return;}
+            tasks.forEach((t,i)=>{const li=document.createElement('li');li.className=`task-item ${t.completed?'completed':''}`;li.style.animationDelay=(i*0.05)+'s';li.innerHTML=`<div class="task-checkbox" data-id="${t.id}"></div><span class="task-text">${escapeHtml(t.text)}</span><button class="delete-btn" data-id="${t.id}">✕</button>`;taskList.appendChild(li);});updateProgress();
         }
+        function escapeHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+        function addTask(t){if(!currentUser)return;const tr=t.trim();if(!tr)return;tasks.unshift({id:Date.now(),text:tr,completed:false});saveTasks();renderTasks();taskInput.value='';taskInput.focus();}
+        function toggleTask(id){if(!currentUser)return;const t=tasks.find(x=>x.id===id);if(t){t.completed=!t.completed;if(currentUser&&t.completed){currentUser.totalTasksCompleted=(currentUser.totalTasksCompleted||0)+1;saveCurrentUser();checkNewNFTs();}saveTasks();renderTasks();}}
+        function deleteTask(id){if(!currentUser)return;tasks=tasks.filter(x=>x.id!==id);saveTasks();renderTasks();}
+        addBtn.addEventListener('click',()=>addTask(taskInput.value));
+        taskInput.addEventListener('keydown',(e)=>{if(e.key==='Enter')addTask(taskInput.value);});
+        taskList.addEventListener('click',(e)=>{const cb=e.target.closest('.task-checkbox'),db=e.target.closest('.delete-btn');if(cb)toggleTask(Number(cb.dataset.id));if(db)deleteTask(Number(db.dataset.id));});
 
-        function updateProgress() {
-            const total = tasks.length;
-            const completed = tasks.filter(t => t.completed).length;
-            const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
-            progressFill.style.width = percent + '%';
-            progressText.textContent = `${completed}/${total}`;
-            if (currentUser) {
-                updateUserStats();
-                if (total > 0 && completed === total) {
-                    if (!currentUser.perfectDays) currentUser.perfectDays = 0;
-                    const today = new Date().toDateString();
-                    if (currentUser.lastPerfectDay !== today) {
-                        currentUser.perfectDays++;
-                        currentUser.lastPerfectDay = today;
-                        saveCurrentUser();
-                    }
-                }
-            }
+        function init(){
+            const su=localStorage.getItem('dayflow_currentUser');if(su){currentUser=JSON.parse(su);}
+            updateAuthUI();updateDate();updateContentVisibility();loadUserTasks();loadFriends();updateNFTDisplay();
+            fetchCryptoPrices();setInterval(fetchCryptoPrices,60000);
         }
-
-        function renderTasks() {
-            taskList.innerHTML = '';
-            if (tasks.length === 0) {
-                taskList.innerHTML = '<li class="empty-state"><div class="icon">🌟</div><p>All clear!</p><p style="font-size:13px;">Add a task and start your day</p></li>';
-                updateProgress();
-                return;
-            }
-            tasks.forEach((task, index) => {
-                const li = document.createElement('li');
-                li.className = `task-item ${task.completed ? 'completed' : ''}`;
-                li.style.animationDelay = (index * 0.05) + 's';
-                li.innerHTML = `<div class="task-checkbox" data-id="${task.id}"></div><span class="task-text">${escapeHtml(task.text)}</span><button class="delete-btn" data-id="${task.id}">✕</button>`;
-                taskList.appendChild(li);
-            });
-            updateProgress();
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function addTask(text) {
-            const trimmed = text.trim();
-            if (!trimmed) return;
-            tasks.unshift({ id: Date.now(), text: trimmed, completed: false });
-            saveTasks();
-            renderTasks();
-            taskInput.value = '';
-            taskInput.focus();
-        }
-
-        function toggleTask(id) {
-            const task = tasks.find(t => t.id === id);
-            if (task) {
-                task.completed = !task.completed;
-                if (currentUser && task.completed) {
-                    currentUser.totalTasksCompleted = (currentUser.totalTasksCompleted || 0) + 1;
-                    saveCurrentUser();
-                    checkNewNFTs();
-                }
-                saveTasks();
-                renderTasks();
-            }
-        }
-
-        function deleteTask(id) {
-            tasks = tasks.filter(t => t.id !== id);
-            saveTasks();
-            renderTasks();
-        }
-
-        addBtn.addEventListener('click', () => addTask(taskInput.value));
-        taskInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') addTask(taskInput.value); });
-        taskList.addEventListener('click', (e) => {
-            const checkbox = e.target.closest('.task-checkbox');
-            const deleteBtn = e.target.closest('.delete-btn');
-            if (checkbox) toggleTask(Number(checkbox.dataset.id));
-            if (deleteBtn) deleteTask(Number(deleteBtn.dataset.id));
-        });
-
-        function init() {
-            const savedUser = localStorage.getItem('dayflow_currentUser');
-            if (savedUser) { currentUser = JSON.parse(savedUser); }
-            updateAuthUI();
-            updateDate();
-            loadUserTasks();
-            updateNFTDisplay();
-            fetchCryptoPrices();
-            setInterval(fetchCryptoPrices, 60000);
-        }
-
         init();
     </script>
 </body>
